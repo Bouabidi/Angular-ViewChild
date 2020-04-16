@@ -3,19 +3,17 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { ChildComponent } from './child/child.component';
-import { HelloComponent } from './hello/hello.component';
+import { CustomerModule } from './customer/customer.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ChildComponent,
-    HelloComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CustomerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
