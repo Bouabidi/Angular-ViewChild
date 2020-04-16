@@ -24,8 +24,9 @@ ng g c customer/customer-detail
 
 add CustomerModule to app.module
 
-## Code Change
+## Passing Data from Parent to Child
 #customer component
+
 in customer.component.html add  <app-customer-detail [customer]="customer"></app-customer-detail>
 
 in customer.component declare a new variable:  customer: any;
@@ -42,6 +43,7 @@ ngOnInit(): void {
   }
 ```
 #customer-detail component
+
 add @Input()customer: any;
 
 in the template 
@@ -55,5 +57,34 @@ City : {{customer.address.city}}
 
 add  <app-customer></app-customer>
 
+## Passing Data from Child to Parent
+
+
+#customer-detail component:
+
+add @Output() customerChanged = new EventEmitter<any>();
+  
+in customer-detail.html add 
+
+<button (click)="change()"><change customer</button>
+
+use the EventEmitter to send a data:
+```javascript
+add change(){
+this.customer.name = "i changed the name";
+this.customerChanged.emit(this.customer);
+}
+```
+#customer component
+
+update customer.html by adding (customerChanged)="change($event)"
+
+add the function
+
+```javascript
+changed(customer: any) {
+this.customer= customer;
+}
+```
 
 
