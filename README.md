@@ -1,27 +1,59 @@
 # AngularViewChild
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.4.
+If we want to pass data from a child to a parent or a parent to a child component we can use @Input and @Output.
+How to use it?
 
 ## Development server
+
+git clone https://github.com/Bouabidi/Angular-ViewChild.git
+
+cd Angular-ViewChild
+
+npm install 
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+ng g m customer
 
-## Build
+ng g c customer 
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+ng g c customer/customer-detail
 
-## Running unit tests
+add CustomerModule to app.module
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Code Change
+#customer component
+in customer.component.html add  <app-customer-detail [customer]="customer"></app-customer-detail>
 
-## Running end-to-end tests
+in customer.component declare a new variable:  customer: any;
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+update ngOnInit
+```javascript
+ngOnInit(): void {
+    this.customer = {
+      name: 'fethi',
+      address: {
+        city: 'Frankfurt'
+      }
+    };
+  }
+```
+#customer-detail component
+add @Input()customer: any;
 
-## Further help
+in the template 
+```javacript
+Name : {{customer.name}}
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+City : {{customer.address.city}}
+```
+
+# app.module
+
+add  <app-customer></app-customer>
+
+
+
