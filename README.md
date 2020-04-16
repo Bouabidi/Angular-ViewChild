@@ -53,10 +53,13 @@ Name : {{customer.name}}
 City : {{customer.address.city}}
 ```
 
-# app.module
+app.html
 
-add  <app-customer></app-customer>
+add 
 
+```javascript
+<app-customer></app-customer>
+```
 ## Passing Data from Child to Parent
 
 
